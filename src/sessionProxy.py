@@ -43,7 +43,6 @@ class SessionProxy(GObject.GObject):
 
     def on_proxy_ready(self, object, result, data=None):
         self.proxy = Gio.DBusProxy.new_for_bus_finish(result)
-        print("got proxy")
         trackers.con_tracker_get().connect(self.proxy,
                                            "g-signal",
                                            self.on_signal)
@@ -51,13 +50,11 @@ class SessionProxy(GObject.GObject):
         self.alive = True
 
     def on_signal(self, proxy, sender, signal, params):
-        print("signal rec")
         if signal == "StatusChanged":
             self.set_status(params[0])
     
     def set_status(self, status):
         is_idle = status == 3
-        print("is idle", is_idle)
         if is_idle:
             self.set_session_idle_notice(True)
 
