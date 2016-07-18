@@ -2,7 +2,7 @@
 
 import gi
 gi.require_version('CinnamonDesktop', '3.0')
-from gi.repository import Gtk, CinnamonDesktop, Gdk, Gio
+from gi.repository import CinnamonDesktop, Gdk, Gio
 
 from overlay import ScreensaverOverlayWindow
 from window import ScreensaverWindow
@@ -10,7 +10,6 @@ from unlock import UnlockDialog
 from clock import ClockWidget
 import constants as c
 
-from keybindings import KeyBindings
 import trackers
 import utils
 import time

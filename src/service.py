@@ -1,6 +1,6 @@
 #! /usr/bin/python3
 
-from gi.repository import Gio, GLib, Gtk, GObject
+from gi.repository import Gtk
 
 import dbus, dbus.service, dbus.glib
 
@@ -8,7 +8,6 @@ import signal
 signal.signal(signal.SIGINT, signal.SIG_DFL)
 
 from manager import ScreensaverManager
-from eventHandler import EventHandler
 from sessionProxy import SessionProxy
 
 import trackers
