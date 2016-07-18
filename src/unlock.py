@@ -11,8 +11,7 @@ from authenticator import PAMServiceProxy
 import utils
 import os
 import trackers
-from eventHandler import GrabHelper
-
+from grabHelper import GrabHelper
 
 from baseWindow import BaseWindow
 

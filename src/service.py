@@ -8,6 +8,7 @@ import signal
 signal.signal(signal.SIGINT, signal.SIG_DFL)
 
 from manager import ScreensaverManager
+from eventHandler import EventHandler
 from sessionProxy import SessionProxy
 
 import trackers
@@ -18,7 +19,7 @@ class ScreensaverService(dbus.service.Object):
         bus_name = dbus.service.BusName(c.SS_SERVICE, bus=dbus.SessionBus())
         dbus.service.Object.__init__(self, bus_name, c.SS_PATH)
 
-        self.screen_manager = ScreensaverManager()
+        self.screen_manager = ScreensaverManager.get()
 
         self.session_watcher = SessionProxy()
         trackers.con_tracker_get().connect(self.session_watcher,

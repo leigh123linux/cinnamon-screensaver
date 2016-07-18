@@ -20,6 +20,7 @@ app_PYTHON = \
         eventHandler.py \
         keybindings.py \
         unlock.py \
+        grabHelper.py \
         manager.py \
         overlay.py \
         service.py \
