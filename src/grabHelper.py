@@ -114,8 +114,6 @@ class OffscreenWindow(Gtk.Invisible):
     def __init__(self):
         super(OffscreenWindow, self).__init__()
 
-        self.eh = EventHandler.get()
-
     def do_key_press_event(self, event):
         # print("OffscreenWindow: do_key_press_event")
-        return self.eh.on_key_press_event(event)
+        EventHandler.get().on_key_press_event(event)

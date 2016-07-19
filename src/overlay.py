@@ -4,7 +4,7 @@ from gi.repository import Gtk, Gdk
 import utils
 import trackers
 
-import eventHandler
+from eventHandler import EventHandler
 import manager
 
 from window import ScreensaverWindow
@@ -19,9 +19,6 @@ class ScreensaverOverlayWindow(Gtk.Window):
                                                        decorated=False,
                                                        skip_taskbar_hint=True,
                                                        skip_pager_hint=True)
-
-        self.eh = eventHandler.EventHandler.get()
-        self.manager = manager.ScreensaverManager.get()
 
         self.screen = screen
 
@@ -102,15 +99,15 @@ class ScreensaverOverlayWindow(Gtk.Window):
 
     def do_motion_notify_event(self, event):
         # print("OverlayWindow: do_motion_notify_event")
-        return self.eh.on_motion_event(event)
+        return EventHandler.get().on_motion_event(event)
 
     def do_key_press_event(self, event):
         # print("OverlayWindow: do_key_press_event")
-        return self.eh.on_key_press_event(event)
+        return EventHandler.get().on_key_press_event(event)
 
     def do_button_press_event(self, event):
         # print("OverlayWindow: do_button_press_event")
-        return self.eh.on_button_press_event(event)
+        return EventHandler.get().on_button_press_event(event)
 
 
 # Overlay window management #
@@ -141,7 +138,7 @@ class ScreensaverOverlayWindow(Gtk.Window):
         if isinstance(child, ClockWidget):
             min_rect, nat_rect = child.get_preferred_size()
 
-            if self.manager.unlock_raised:
+            if manager.ScreensaverManager.get().unlock_raised:
                 monitor_rect = self.screen.get_monitor_geometry(utils.get_mouse_monitor())
 
                 allocation.width = nat_rect.width
