@@ -44,7 +44,7 @@ to the idle listening state.
 ### To do
 - gsettings, use existing settings where applicable, consider refactoring of how screensaver/power
   stuff is presented to the user
-- notifications need tested - do they appear over the screensaver?
+- ~~notifications need tested - do they appear over the screensaver?~~
 - add music player widget?  Show album art, etc..?
 - make switch user/logout more robust
 - implement motion event threshold - don't wake unless mouse has been moved XX pixels
