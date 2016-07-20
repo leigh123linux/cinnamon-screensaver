@@ -50,3 +50,5 @@ to the idle listening state.
 - implement motion event threshold - don't wake unless mouse has been moved XX pixels
 - security testing... try to break it
 - re-add xscreensaver stuff
+- fix some spaghetti
+
