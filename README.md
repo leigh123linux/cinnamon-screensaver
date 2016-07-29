@@ -48,8 +48,8 @@ to the idle listening state.
 - security testing... try to break it
 - more compatible authentication? - fine for mint, but python3-pam doesn't exist in arch, for instance.
 
-
-- logind vs consolekit... what what what?  what exactly is required here?  we want to lock the desktop prior to
+#### logind vs consolekit
+- what what what?  what exactly is required here?  we want to lock the desktop prior to
   suspend/hibernate?  Unlock/deactivate when coming back from mdm as an already-logged-in-session?  what else??
   I look at d-feet, I see CK *and* logind running, do we need a gsettings key?  Shouldn't there be something that
   can tell us what to be using if both exist?
