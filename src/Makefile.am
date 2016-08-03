@@ -17,6 +17,7 @@ app_PYTHON = \
         baseWindow.py \
         clock.py \
         config.py \
+        consoleKitProxy.py \
         constants.py \
         eventHandler.py \
         fader.py \
