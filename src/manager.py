@@ -8,6 +8,7 @@ import utils
 import settings
 import status
 from sessionProxy import SessionProxy
+from logindProxy import LogindProxy, LogindConnectionError
 from fader import Fader
 from overlay import ScreensaverOverlayWindow
 from grabHelper import GrabHelper
@@ -31,6 +32,21 @@ class ScreensaverManager:
 
         self.grab_helper = GrabHelper(self)
         self.session_watcher = SessionProxy()
+
+        try:
+            self.logind_watcher = LogindProxy()
+            trackers.con_tracker_get().connect(self.logind_watcher,
+                                               "lock",
+                                               lambda proxy: self.lock())
+            trackers.con_tracker_get().connect(self.logind_watcher,
+                                               "unlock",
+                                               lambda proxy: self.unlock())
+            trackers.con_tracker_get().connect(self.logind_watcher,
+                                               "active",
+                                               lambda proxy: self.simulate_user_activity())
+        except LogindConnectionError:
+            print("no logind")
+            pass
 
         trackers.con_tracker_get().connect(self.session_watcher,
                                            "idle-changed", 

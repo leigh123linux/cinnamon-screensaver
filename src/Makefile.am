@@ -22,6 +22,7 @@ app_PYTHON = \
         fader.py \
         grabHelper.py \
         keybindings.py \
+        logindProxy.py \
         manager.py \
         monitorView.py \
         overlay.py \
